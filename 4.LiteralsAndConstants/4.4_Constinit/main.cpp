@@ -1,5 +1,5 @@
 #include <iostream>
-
+//Recomendado para resolver problemas fora da função main
 //"constinit" somente para variaveis globais ou static
 
 const int var1 {33};
