@@ -1,9 +1,6 @@
 #include <iostream>
 #include <gl/glut.h>
 
-// Função para alterar o tamanho da jane
-
-
 // Função callback chamada para fazer o desenho
 
 void Desenha(void) {
@@ -13,13 +10,9 @@ void Desenha(void) {
 	//Define a cor de desenho: vermelho
 	glColor3f(1, 0, 0);
 	//Desenha um triângulo no centro da janela
-	glBegin(GL_TRIANGLES);
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex2f(-0.5, -0.5);
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex2f(0.0, 0.5);
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex2f(0.5, -0.5);
+	glBegin(GL_LINES);
+		glVertex2i(0, 0);
+		glVertex2i(4, 4);
 	glEnd();
 	//Executa os comandos OpenGL
 	glFlush();
@@ -29,8 +22,7 @@ void Desenha(void) {
 void Teclado(unsigned char key, int x, int y) {
 	if (key == 27)
 	{
-		glutReshapeWindow(1000,500);;
-		//exit(0);
+		exit(0);
 	}
 		
 }
@@ -45,11 +37,11 @@ void Inicializa(void) {
 // Programa Principal
 int main(int argc, char** argv) 
 {
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(400, 400);
-	glutCreateWindow("Segundo Programa");
-	glutDisplayFunc(Desenha);
+	glutInit(&argc, argv);								// Inicializa o GLUT
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);		// Configura o modo de display
+	glutInitWindowSize(400, 400);						// Configura a largura e altura da janela de exibição
+	glutCreateWindow("Segundo Programa");				// Cria a janela, passando o titulo dela
+	glutDisplayFunc(Desenha);							// Estabelece a função desenha como função de callback de exibição
 	glutKeyboardFunc(Teclado);
 	Inicializa();
 	glutMainLoop();
